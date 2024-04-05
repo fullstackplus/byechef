@@ -10,7 +10,7 @@ BACK_END_LIST  = JSON.parse(File.read('data/back-end.json'))
 
 # ('') -> ''
 def get_github_profile(url)
-  page = Nokogiri::HTML(URI.open("https://fullstackplus.tech"))
+  page = Nokogiri::HTML(URI.open(url))
   links = page.css('a').map { |link| link['href']}
   profiles = links.select { |l| l.match(/^https:\/\/github.com\//) }
   profiles.first.split('/').last
